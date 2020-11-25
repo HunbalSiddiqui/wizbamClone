@@ -1,0 +1,99 @@
+.searchresult-wrapper{
+    display: grid;
+    grid-template-columns: minmax(0rem,1fr) minmax(min-content,1920px) minmax(0rem,1fr);
+    grid-template-rows: 100vh;
+}
+.searchresult-container{
+    /* background-color: brown; */
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 10vh 100vh 100vh;
+    grid-template-areas: "searchbar searchbar"
+                         "r1c1 r1c2"
+                         "r2c1 r2c2"
+                         "r3c1 r3c2"
+                         "r4c1 r4c2"
+                         "r5c1 r5c2"
+                         "r6c1 r6c2";
+}
+.searchbar{
+    grid-area: searchbar;
+}
+.commongrid{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 90% 10%;
+}
+.commongrid-row1{
+    overflow-y: auto;
+    overflow-x: hidden;    
+}
+.r1c1{
+    grid-area: r1c1;
+    overflow-x: hidden;
+    /* overflow-y: auto; */
+    box-sizing: border-box;
+}
+.r1c2{
+    grid-area: r1c2;
+    overflow-x: hidden;
+    /* overflow-y: auto; */
+    box-sizing: border-box;
+}
+.r2c1{
+    grid-area: r2c1;
+    overflow-x: hidden;
+    /* overflow-y: auto; */
+    box-sizing: border-box;
+    margin-top: 5%;
+}
+.r2c2{
+    grid-row-gap: r2c2;
+    overflow-x: hidden;
+    /* overflow-y: auto; */
+    box-sizing: border-box;
+    margin-top: 5%;
+}
+
+/* Result without image design */
+.result-without-image{
+    width: 100%;height: 10rem;max-height: 10rem;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-top: 2%;
+   
+}
+.result-with-image{
+    width: 100%;height: 10rem;max-height: 10rem;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 100%;
+    margin-top: 2%;
+}
+.content{
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width:600px)
+{
+    .searchresult-container{
+        /* background-color: brown; */
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 10vh 100vh 100vh 100vh 100vh;
+        grid-template-areas: "searchbar searchbar"
+                             "r1c1 r1c1"
+                             "r1c2 r1c2"
+                             "r2c1 r2c1"
+                             "r2c2 r2c2"
+                             "r5c1 r5c2"
+                             "r6c1 r6c2";
+    }
+}
