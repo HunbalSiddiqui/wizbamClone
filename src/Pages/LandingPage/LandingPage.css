@@ -1,28 +1,93 @@
 .ladingpage-wrapper{
     display: grid;
-    grid-template-columns: minmax(0rem,1fr) minmax(min-content,1920px) minmax(0rem,1fr);
-    grid-template-rows: 100vh;
+    /* grid-template-columns: minmax(0rem,1fr) minmax(min-content,1920px) minmax(0rem,1fr); */
+    grid-template-columns: minmax(0rem,1fr) 100vw minmax(0rem,1fr);
+    grid-template-rows: minmax(100vh,min-content);
     /* grid-template-rows: 150vh; */
 }
 .landingpage-container{
     display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 30vh minmax(50vh,min-content) 20vh;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 10vh minmax(90vh,min-content);
+    grid-template-areas: "landingpage-nav landingpage-nav"
+                         "landingpage-left landingpage-right";
     /* grid-template-rows: 30vh minmax(50vh,min-content) 20vh 50vh; */
 }
-.search-icons-row{
+.landingpage-nav{
+    grid-area: landingpage-nav;
+}
+.landingpage-left{
+    grid-area: landingpage-left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.landingpage-right{
+    grid-area: landingpage-right;
+    position: relative;
     display: grid;
+    grid-gap: 1rem;
     grid-template-columns: repeat(auto-fit,minmax(12rem,min-content));
+}
+.search-icons-row{
+
 }
 .circle{
     width:12rem;
     height: 12rem;
-    border-radius: 100%;
-    /* background-color: aqua; */
+    /* background-color: whitesmoke; */
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
 }
 .w80h80{
     width: 80%;height: 80%;
+    cursor: pointer;
 }
 .w100h100{
     width: 100%;height: 100%;
 }
+.linedivider{
+    width:5px;
+    height:80%;
+    background-color: orange;
+    position: absolute;
+}
+
+
+@media screen and (max-width: 800px) {
+    .landingpage-container{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 10vh minmax(30vh,min-content) minmax(50vh,min-content);
+        grid-template-areas: "landingpage-nav landingpage-nav"
+                             "landingpage-left landingpage-left"
+                             "landingpage-right landingpage-right";
+        /* grid-template-rows: 30vh minmax(50vh,min-content) 20vh 50vh; */
+    }
+    .landingpage-left{
+        grid-area: landingpage-left;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        box-sizing: border-box;
+        padding-bottom: 2rem;        
+    }
+    .landingpage-right{
+        grid-area: landingpage-right;
+        position: relative;
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto-fit,minmax(12rem,min-content));
+        box-sizing: border-box;
+        padding-top: 2rem;       
+    }
+    .linedivider{
+        width:80%;
+        height:5px;
+        background-color: orange;
+        position: absolute;
+        top: 0;
+        left: 10%;right: 10%;
+    }
+    
+  }

@@ -169,34 +169,41 @@ function SearchResults(props) {
       <div></div>
       <div className="searchresult-container">
         <div className="searchbar flex bg-dark">
-          <Link to={`/`} style={{textDecoration:"none",color:"inherit", flex: "1"}}>
-            <div  className="white f2 flex">
-              Home
-            </div>
-          </Link>
-          <div
-            className="input-group f1-5"
-            style={{ width: "60%", lineHeight: "3rem", flex: "3" }}
+          <Link
+            to={`/`}
+            style={{ textDecoration: "none", color: "inherit", flex: "1" }}
           >
-            <input
-              type="text"
-              style={{ width: "80%" }}
-              value={valuee}
-              onChange={(e) => {
-                setValue(e.target.value);
-              }}
-            />
-            <div className="input-group-append">
-              <button
-                className="btn btn-outline-secondary f1-5"
-                type="button"
-                onClick={() => {
-                  handleSearch();
+            <div className="white f2 flex">Home</div>
+          </Link>
+          <div style={{flex:"5"}}>
+            <form style={{ width: "100%" }} className="flex">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="f1-5"
+                value={valuee}
+                style={{
+                  width: "80%",
+                  border: "1px solid black",
+                  borderRadius: "30px 30px",
+                  boxSizing: "border-box",
+                  padding: "1rem 2rem",
+                  outline: "0",
                 }}
+                onChange={(e) => {
+                  setValue(e.target.value);
+                }}
+              />
+              <br />
+              <button
+                type="button"
+                className="btn btn-outline-success f1-5"
+                onClick={handleSearch}
+                style={{borderRadius:"100%",padding:"1rem 1rem",marginLeft:"2%"}}
               >
-                Search
+                WS
               </button>
-            </div>
+            </form>
           </div>
         </div>
         <div className="commongrid  r1c1">
