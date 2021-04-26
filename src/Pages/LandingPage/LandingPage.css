@@ -1,20 +1,23 @@
-.ladingpage-wrapper{
+.ladingpage-wrapperr{
     display: grid;
     /* grid-template-columns: minmax(0rem,1fr) minmax(min-content,1920px) minmax(0rem,1fr); */
     grid-template-columns: minmax(0rem,1fr) 100vw minmax(0rem,1fr);
     grid-template-rows: minmax(100vh,min-content);
-    /* grid-template-rows: 150vh; */
+    grid-template-areas: '. landingpage-container .';
 }
 .landingpage-container{
+    grid-area: landingpage-container;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 10vh minmax(90vh,min-content);
+    grid-template-rows: 10vh 90vh;
     grid-template-areas: "landingpage-nav landingpage-nav"
                          "landingpage-left landingpage-right";
     /* grid-template-rows: 30vh minmax(50vh,min-content) 20vh 50vh; */
 }
 .landingpage-nav{
     grid-area: landingpage-nav;
+    box-sizing: border-box;
+    padding-right: 2%;
 }
 .landingpage-left{
     grid-area: landingpage-left;
@@ -28,9 +31,18 @@
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fit,minmax(12rem,min-content));
+    grid-template-rows: minmax(12rem,min-content);
 }
-.search-icons-row{
-
+.search-btn{
+    border-radius: 3px;
+}
+.searchbar{
+    transition: 0.2s ease-in-out;
+}
+.searchbar-hover{
+    border: 1px solid orange;
+    /* box-shadow: 0 1px #fff, inset 0 1px 4px orange */
+    box-shadow: 0 1px #fff, inset 0 1px 4px rgb(243 82 82 / 15%);
 }
 .circle{
     width:12rem;
@@ -58,7 +70,7 @@
     .landingpage-container{
         display: grid;
         grid-template-columns: 50% 50%;
-        grid-template-rows: 10vh minmax(30vh,min-content) minmax(50vh,min-content);
+        grid-template-rows: 10% minmax(40%,min-content) minmax(50%,min-content);
         grid-template-areas: "landingpage-nav landingpage-nav"
                              "landingpage-left landingpage-left"
                              "landingpage-right landingpage-right";
@@ -78,6 +90,7 @@
         display: grid;
         grid-gap: 1rem;
         grid-template-columns: repeat(auto-fit,minmax(12rem,min-content));
+        grid-template-rows: min-content;
         box-sizing: border-box;
         padding-top: 2rem;       
     }

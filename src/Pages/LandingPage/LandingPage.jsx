@@ -12,8 +12,8 @@ import b from "./imgs/b.png";
 import a from "./imgs/a.png";
 import { connect } from "react-redux";
 import { searchFunction } from "../../Redux/searchReducer/searchReducerActions";
-import Switch from '@material-ui/core/Switch';
-import Brightness4Icon from '@material-ui/icons/Brightness4';
+import Switch from "@material-ui/core/Switch";
+import Brightness4Icon from "@material-ui/icons/Brightness4";
 
 function LandingPage(props) {
   const [state, setState] = React.useState({
@@ -25,39 +25,45 @@ function LandingPage(props) {
   };
 
   useEffect(() => {
-    var container = document.querySelector('.landingpage-container')
-    var searchBtn = document.querySelector('.search-btn')
-    if(state.checkedA)
-    {
-      container.style.background = "#35363A"
-      searchBtn.style.border = "0.1px solid white"
-      searchBtn.style.color = "white"
-    }
-    else {
-      container.style.background = "white"
-      searchBtn.style.border = "1px solid #35363A"
-      // searchBtn.style.color = "#35363A"
+    var container = document.querySelector(".landingpage-container");
+    var searchBtn = document.querySelector(".search-btn");
+    var searchbar = document.querySelector(".searchbar");
+    var landingpageRight = document.querySelector(".landingpage-right");
+    if (state.checkedA) {
+      container.style.background = "#35363A";
+      searchBtn.style.border = "0.1px solid white";
+      searchBtn.style.color = "white";
+    } else {
+      container.style.background = "white";
+      // landingpageRight.stlye.background = "whitesmoke"
+      searchBtn.style.border = "1px solid #35363A";
+      searchbar.style.border = "0.1px solid lightgray";
+      searchbar.style.boxShadow =
+        "0 1px #fff, inset 0 1px 4px rgb(243 82 82 / 15%)";
     }
     return () => {
       // cleanup
-    }
-  }, [state])
+    };
+  }, [state]);
 
   const ThemeSwitch = () => {
     return (
       <div className="flex">
-        <Brightness4Icon style={{fontSize:"3rem"}}/>
+        {state.checkedA ? (
+          <Brightness4Icon style={{ fontSize: "3rem", color: "orange" }} />
+        ) : (
+          <Brightness4Icon style={{ fontSize: "3rem", color:"black" }} />
+        )}
         <Switch
           checked={state.checkedA}
           onChange={handleChange}
           color="default"
           name="checkedA"
-          inputProps={{ 'aria-label': 'primary checkbox' }}
+          inputProps={{ "aria-label": "primary checkbox" }}
         />
       </div>
-    )
-  }
-
+    );
+  };
 
   var [valuee, setValue] = useState("");
   var [selectedEngine, setSelectedEngines] = useState([]);
@@ -85,7 +91,7 @@ function LandingPage(props) {
       if (selectedEngine.length > 3) {
         alert("Can not select more than 4 for now.");
       } else {
-        refCircle.style.backgroundColor = "white";
+        refCircle.style.backgroundColor = "#DAE0E2";
         setSelectedEngines((prevState) => [...prevState, id]);
       }
     }
@@ -98,23 +104,53 @@ function LandingPage(props) {
   const Engine = () => {
     return (
       <form style={{ width: "100%" }} className="flex-col">
-        <input
-          type="text"
-          placeholder="Search..."
-          className="f1-5"
-          value={valuee}
-          style={{
-            width: "90%",
-            border: "1px solid black",
-            borderRadius: "30px 30px",
-            boxSizing: "border-box",
-            padding: "1rem 2rem",
-            outline: "0",
-          }}
-          onChange={(e) => {
-            setValue(e.target.value);
-          }}
-        />
+        {state.checkedA ? (
+          <input
+            type="text"
+            placeholder="Search..."
+            className="f1-5 searchbar"
+            value={valuee}
+            style={{
+              width: "90%",
+              borderRadius: "30px 30px",
+              boxSizing: "border-box",
+              padding: "1rem 2rem",
+              outline: "0",
+            }}
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
+          />
+        ) : (
+          <input
+            type="text"
+            placeholder="Search..."
+            className="f1-5 searchbar"
+            value={valuee}
+            style={{
+              width: "90%",
+              borderRadius: "30px 30px",
+              boxSizing: "border-box",
+              padding: "1rem 2rem",
+              outline: "0",
+            }}
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
+            onMouseEnter={() => {
+              document.querySelector(".searchbar").style.border =
+                "0.1px solid orange";
+              document.querySelector(".searchbar").style.boxShadow =
+                "0 0 10px 2px rgba(0,0,0,0.3)";
+            }}
+            onMouseLeave={() => {
+              document.querySelector(".searchbar").style.border =
+                "0.1px solid lightgray";
+              document.querySelector(".searchbar").style.boxShadow =
+                "0 1px #fff, inset 0 1px 4px rgb(243 82 82 / 15%)";
+            }}
+          />
+        )}
         <br />
         <button
           type="button"
@@ -129,11 +165,11 @@ function LandingPage(props) {
 
   return (
     <div className="ladingpage-wrapper">
-      <div></div>
       <div className="landingpage-container">
         <div className="landingpage-nav flex-end">
-          <ThemeSwitch/>
+          <ThemeSwitch style={{ color: "white" }} />
         </div>
+        <div className="landingpage-left">{Engine()}</div>
         <div className="landingpage-right flex">
           <Linedivider />
           <div className="circle flex" id="google">
@@ -237,11 +273,7 @@ function LandingPage(props) {
             />
           </div>
         </div>
-        <div className="landingpage-left">
-            {Engine()}
-        </div>
       </div>
-      <div></div>
     </div>
   );
 }

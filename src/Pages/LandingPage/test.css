@@ -1,0 +1,9 @@
+*{
+    margin: 0;border: 0;padding: 0;
+}
+.test{
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: minmax(100vh,min-content);
+    background-color: orangered;
+}
